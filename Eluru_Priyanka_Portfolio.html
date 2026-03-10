@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eluru Priyanka – QA Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --deep: #1a2d42;
+    --blue: #1e5fa8;
+    --accent: #3b9ae1;
+    --gold: #c9a84c;
+    --gold-light: #f0d080;
+    --cream: #f9f6f0;
+    --mist: #e8eef6;
+    --text: #1a1a2e;
+    --muted: #5a6880;
+    --white: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ─────────────────────────────────────────────── */
+  .hero {
+    background: var(--navy);
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 20%, rgba(30,95,168,0.35) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 40% at 10% 80%, rgba(59,154,225,0.2) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59,154,225,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,154,225,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .hero-nav {
+    position: relative;
+    z-index: 10;
+    padding: 32px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(59,154,225,0.15);
+  }
+
+  .nav-brand {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+
+  .nav-badge {
+    background: rgba(59,154,225,0.15);
+    border: 1px solid rgba(59,154,225,0.3);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    text-transform: uppercase;
+  }
+
+  .hero-body {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px;
+    max-width: 900px;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-tag span {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 8vw, 88px);
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--white);
+    margin-bottom: 8px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.55);
+    margin-top: 20px;
+    margin-bottom: 36px;
+    line-height: 1.6;
+    max-width: 520px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+  }
+
+  .meta-item .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .hero-footer {
+    position: relative;
+    z-index: 10;
+    padding: 28px 60px;
+    border-top: 1px solid rgba(59,154,225,0.12);
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .hero-contact a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+
+  .hero-contact a:hover { color: var(--accent); }
+
+  .hero-contact a svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+  }
+
+  /* ── MAIN ─────────────────────────────────────────────── */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+
+  .section-label h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--mist), transparent);
+  }
+
+  /* ── SKILLS STRIP ─────────────────────────────────────── */
+  .skills-strip {
+    background: var(--deep);
+    padding: 28px 60px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .skill-tag {
+    background: rgba(59,154,225,0.12);
+    border: 1px solid rgba(59,154,225,0.25);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 6px 14px;
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+
+  .skill-tag:hover {
+    background: rgba(59,154,225,0.25);
+    border-color: var(--accent);
+  }
+
+  /* ── CARDS GRID ───────────────────────────────────────── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 64px;
+  }
+
+  .card {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(13,27,42,0.12);
+  }
+
+  .card-header {
+    padding: 24px 24px 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .card-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+  }
+
+  .badge-excel { background: #e8f5e9; color: #2e7d32; }
+  .badge-pdf   { background: #fff3e0; color: #e65100; }
+  .badge-link  { background: #e3f2fd; color: #1565c0; }
+  .badge-word  { background: #f3e5f5; color: #6a1b9a; }
+
+  .card-body {
+    padding: 16px 24px 24px;
+  }
+
+  .card-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .card-body p {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  .tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 4px;
+    background: var(--mist);
+    color: var(--blue);
+  }
+
+  .card-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--navy);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background 0.2s, gap 0.2s;
+  }
+
+  .card-btn:hover {
+    background: var(--blue);
+    gap: 10px;
+  }
+
+  .card-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+  }
+
+  /* ── FEATURED CARD ────────────────────────────────────── */
+  .card-featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .card-featured .card-visual {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--deep) 60%, #0f2d4a 100%);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 12px 0 0 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-visual::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(59,154,225,0.1);
+  }
+
+  .card-visual::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; left: -20px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.1);
+  }
+
+  .visual-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    position: relative;
+    z-index: 1;
+  }
+
+  .visual-title span { color: var(--gold); }
+
+  .visual-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat {
+    padding: 14px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.5px;
+  }
+
+  .card-featured .card-body {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .card-featured .card-body h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  /* ── EXTERNAL LINKS ───────────────────────────────────── */
+  .links-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 64px;
+  }
+
+  .ext-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ext-link::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 3px 0 0 3px;
+  }
+
+  .ext-link.linkedin::before { background: #0a66c2; }
+  .ext-link.github::before   { background: #333; }
+  .ext-link.email::before    { background: var(--gold); }
+  .ext-link.phone::before    { background: #34a853; }
+
+  .ext-link:hover {
+    transform: translateX(3px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border-color: rgba(0,0,0,0.12);
+  }
+
+  .ext-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .linkedin .ext-icon  { background: #e8f0fb; }
+  .github .ext-icon    { background: #f0f0f0; }
+  .email .ext-icon     { background: #fff8e6; }
+  .phone .ext-icon     { background: #e8f5e9; }
+
+  .ext-info strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+
+  .ext-info span {
+    font-size: 11.5px;
+    color: var(--muted);
+  }
+
+  /* ── EXPERIENCE TIMELINE ──────────────────────────────── */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+    margin-bottom: 64px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px; top: 8px; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--blue), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 32px;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -27px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--blue);
+    border: 2px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--blue);
+  }
+
+  .tl-header {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+
+  .tl-role {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--navy);
+  }
+
+  .tl-company {
+    font-size: 13px;
+    color: var(--blue);
+    font-weight: 500;
+  }
+
+  .tl-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-left: auto;
+  }
+
+  .tl-desc {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── FOOTER ───────────────────────────────────────────── */
+  footer {
+    background: var(--navy);
+    padding: 40px 60px;
+    text-align: center;
+    color: rgba(255,255,255,0.35);
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  footer strong { color: rgba(255,255,255,0.7); }
+
+  /* ── ANIMATIONS ───────────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .card:nth-child(1) { animation-delay: 0.05s; }
+  .card:nth-child(2) { animation-delay: 0.10s; }
+  .card:nth-child(3) { animation-delay: 0.15s; }
+  .card:nth-child(4) { animation-delay: 0.20s; }
+  .card:nth-child(5) { animation-delay: 0.25s; }
+  .card:nth-child(6) { animation-delay: 0.30s; }
+
+  .timeline-item:nth-child(1) { animation-delay: 0.05s; }
+  .timeline-item:nth-child(2) { animation-delay: 0.15s; }
+  .timeline-item:nth-child(3) { animation-delay: 0.25s; }
+
+  @media (max-width: 768px) {
+    .hero-nav, .hero-body, .hero-footer, .skills-strip { padding-left: 24px; padding-right: 24px; }
+    main { padding: 48px 24px; }
+    .card-featured { grid-template-columns: 1fr; }
+    .card-featured .card-visual { border-radius: 12px 12px 0 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ───────────────────────────────────────────────────── -->
+<header class="hero">
+  <div class="hero-grid-lines"></div>
+
+  <nav class="hero-nav">
+    <div class="nav-brand">QA Portfolio</div>
+    <div class="nav-badge">Open to Work · Remote</div>
+  </nav>
+
+  <div class="hero-body">
+    <div class="hero-tag"><span>Manual QA · SAP Functional Tester</span></div>
+    <h1>Eluru<br><em>Priyanka</em></h1>
+    <p class="hero-subtitle">
+      4+ years testing SAP MM &amp; SD modules end-to-end. Specialising in functional, integration &amp; regression testing across ERP and eCommerce platforms.
+    </p>
+    <div class="hero-meta">
+      <div class="meta-item"><div class="dot"></div>Hyderabad, India</div>
+      <div class="meta-item"><div class="dot"></div>Remote Available Worldwide</div>
+      <div class="meta-item"><div class="dot"></div>SAP ECC · JIRA · SQL · TestRail</div>
+    </div>
+  </div>
+
+  <div class="hero-footer">
+    <div class="hero-contact">
+      <a href="mailto:priyapriyankaeluru@gmail.com">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        priyapriyankaeluru@gmail.com
+      </a>
+    </div>
+    <div class="hero-contact">
+      <a href="tel:+917799090360">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.27 6.27l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +91 7799090360
+      </a>
+    </div>
+    <div class="hero-contact">
+      <a href="https://linkedin.com/in/priyanka-priya-508a62388" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn Profile
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ── SKILLS STRIP ───────────────────────────────────────────── -->
+<div class="skills-strip">
+  <div class="skill-tag">SAP MM</div>
+  <div class="skill-tag">SAP SD</div>
+  <div class="skill-tag">SAP ECC</div>
+  <div class="skill-tag">Manual Testing</div>
+  <div class="skill-tag">Functional Testing</div>
+  <div class="skill-tag">Regression Testing</div>
+  <div class="skill-tag">Integration Testing</div>
+  <div class="skill-tag">UAT</div>
+  <div class="skill-tag">E2E Testing</div>
+  <div class="skill-tag">API Testing</div>
+  <div class="skill-tag">JIRA</div>
+  <div class="skill-tag">TestRail</div>
+  <div class="skill-tag">Postman</div>
+  <div class="skill-tag">SQL</div>
+  <div class="skill-tag">Agile / Scrum</div>
+  <div class="skill-tag">STLC · SDLC</div>
+  <div class="skill-tag">Confluence</div>
+  <div class="skill-tag">Defect Management</div>
+</div>
+
+<!-- ── MAIN CONTENT ───────────────────────────────────────────── -->
+<main>
+
+  <!-- Work Samples -->
+  <div class="section-label">
+    <h2>Work Samples</h2>
+  </div>
+
+  <div class="cards-grid">
+
+    <!-- Featured Card -->
+    <div class="card card-featured">
+      <div class="card-visual">
+        <div class="visual-title">QA Portfolio<br><span>Work Samples</span></div>
+        <div class="visual-stats">
+          <div class="stat">
+            <div class="stat-num">20</div>
+            <div class="stat-label">Test Cases<br>(MM &amp; SD)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">10</div>
+            <div class="stat-label">Defects<br>Logged</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">12</div>
+            <div class="stat-label">SQL Validation<br>Queries</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">1</div>
+            <div class="stat-label">Full Test<br>Plan</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <h3>Complete SAP QA Portfolio</h3>
+          <p>A comprehensive set of professional QA work samples demonstrating end-to-end testing skills across SAP MM and SD modules — including structured test cases, a full defect log, SQL validation queries, and a formal test plan document.</p>
+          <div class="card-tags">
+            <span class="tag">SAP MM</span>
+            <span class="tag">SAP SD</span>
+            <span class="tag">Test Cases</span>
+            <span class="tag">Defect Log</span>
+            <span class="tag">SQL Queries</span>
+            <span class="tag">Test Plan</span>
+          </div>
+        </div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <span style="font-size:12px; color:var(--muted); align-self:center;">Download individual files below ↓</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SAP Test Cases -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:#e8f5e9; font-size:24px;">📋</div>
+        <div class="card-badge badge-excel">Excel</div>
+      </div>
+      <div class="card-body">
+        <h3>SAP MM &amp; SD Test Cases</h3>
+        <p>10 MM test cases (PR, PO, GR, Invoice, Stock Transfer) + 10 SD test cases (Sales Order, Delivery, PGI, Billing, Returns, E2E O2C cycle). Color-coded Pass/Fail status with test data and pre-conditions.</p>
+        <div class="card-tags">
+          <span class="tag">SAP MM</span>
+          <span class="tag">SAP SD</span>
+          <span class="tag">E2E Testing</span>
+          <span class="tag">20 TCs</span>
+        </div>
+        <a class="card-btn" href="SAP_TestCases_Eluru_Priyanka.xlsx" download>
+          Download
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Defect Log -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:#fff3e0; font-size:24px;">🐞</div>
+        <div class="card-badge badge-excel">Excel</div>
+      </div>
+      <div class="card-body">
+        <h3>Defect Log &amp; Bug Reports</h3>
+        <p>10 realistic SAP defects across MM, SD, and MM/SD integration scenarios. Includes severity/priority coding, root cause analysis, resolution notes, and a Summary Dashboard sheet.</p>
+        <div class="card-tags">
+          <span class="tag">Bug Reports</span>
+          <span class="tag">JIRA-style</span>
+          <span class="tag">Root Cause</span>
+          <span class="tag">Dashboard</span>
+        </div>
+        <a class="card-btn" href="DefectLog_Eluru_Priyanka.xlsx" download>
+          Download
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- SQL Queries -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:#e3f2fd; font-size:24px;">🗄️</div>
+        <div class="card-badge badge-excel">Excel</div>
+      </div>
+      <div class="card-body">
+        <h3>SQL Data Validation Queries</h3>
+        <p>12 real SAP SQL queries covering EKKO, EKPO, MARD, VBAK, VBAP, VBFA, BKPF tables. Includes purpose, expected output, and SAP table notes. Demonstrates backend data validation skills.</p>
+        <div class="card-tags">
+          <span class="tag">SQL</span>
+          <span class="tag">SAP Tables</span>
+          <span class="tag">Data Validation</span>
+          <span class="tag">12 Queries</span>
+        </div>
+        <a class="card-btn" href="SQL_ValidationQueries_Eluru_Priyanka.xlsx" download>
+          Download
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Test Plan -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:#f3e5f5; font-size:24px;">📝</div>
+        <div class="card-badge badge-excel">Excel</div>
+      </div>
+      <div class="card-body">
+        <h3>Formal Test Plan Document</h3>
+        <p>Professional test plan covering scope, objectives, test environment, schedule &amp; milestones, entry/exit criteria, risk register, defect SLAs, deliverables list, and a formal sign-off section.</p>
+        <div class="card-tags">
+          <span class="tag">Test Planning</span>
+          <span class="tag">Risk Register</span>
+          <span class="tag">Schedule</span>
+          <span class="tag">Sign-Off</span>
+        </div>
+        <a class="card-btn" href="TestPlan_Eluru_Priyanka.xlsx" download>
+          Download
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Resume -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:#e8eaf6; font-size:24px;">📄</div>
+        <div class="card-badge badge-word">Word</div>
+      </div>
+      <div class="card-body">
+        <h3>Resume – SAP Functional Tester</h3>
+        <p>Tailored resume highlighting SAP MM/SD testing expertise, JIRA, SQL, TestRail, and Agile experience. Professionally formatted with skills table and career break addressed confidently.</p>
+        <div class="card-tags">
+          <span class="tag">SAP Specialist</span>
+          <span class="tag">4+ Years</span>
+          <span class="tag">Remote-Ready</span>
+        </div>
+        <a class="card-btn" href="Eluru_Priyanka_Resume.docx" download>
+          Download
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Cover Letter -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:#fce4ec; font-size:24px;">✉️</div>
+        <div class="card-badge badge-word">Word</div>
+      </div>
+      <div class="card-body">
+        <h3>Cover Letter</h3>
+        <p>Professional cover letter positioning SAP niche expertise, cross-domain QA experience, and a confident narrative around returning to work. Adaptable for any Manual QA or SAP Tester role.</p>
+        <div class="card-tags">
+          <span class="tag">Personalised</span>
+          <span class="tag">Career Return</span>
+          <span class="tag">SAP Focus</span>
+        </div>
+        <a class="card-btn" href="Eluru_Priyanka_CoverLetter.docx" download>
+          Download
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Connect / Links -->
+  <div class="section-label">
+    <h2>Connect &amp; Links</h2>
+  </div>
+
+  <div class="links-row">
+    <a class="ext-link linkedin" href="https://linkedin.com/in/priyanka-priya-508a62388" target="_blank">
+      <div class="ext-icon">💼</div>
+      <div class="ext-info">
+        <strong>LinkedIn</strong>
+        <span>priyanka-priya-508a62388</span>
+      </div>
+    </a>
+    <a class="ext-link email" href="mailto:priyapriyankaeluru@gmail.com">
+      <div class="ext-icon">📧</div>
+      <div class="ext-info">
+        <strong>Email</strong>
+        <span>priyapriyankaeluru@gmail.com</span>
+      </div>
+    </a>
+    <a class="ext-link phone" href="tel:+917799090360">
+      <div class="ext-icon">📱</div>
+      <div class="ext-info">
+        <strong>Phone / WhatsApp</strong>
+        <span>+91 7799090360</span>
+      </div>
+    </a>
+    <a class="ext-link github" href="https://testdevjobs.com/location/remote-india/" target="_blank">
+      <div class="ext-icon">🔍</div>
+      <div class="ext-info">
+        <strong>Job Board</strong>
+        <span>Remote QA Jobs – India</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Experience -->
+  <div class="section-label">
+    <h2>Experience</h2>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="tl-header">
+        <span class="tl-role">Associate IT Analyst – SAP Functional Tester (QA)</span>
+        <span class="tl-company">Coromandel International Limited</span>
+        <span class="tl-date">Sep 2021 – Aug 2023</span>
+      </div>
+      <p class="tl-desc">Led manual testing of SAP MM &amp; SD modules in ECC environment. Executed functional, integration, regression and E2E testing. Managed defects in JIRA, conducted UAT with business teams, and validated SAP interfaces using SQL queries.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-header">
+        <span class="tl-role">Business Analyst / QA Tester</span>
+        <span class="tl-company">S2 Software Solutions Pvt. Ltd.</span>
+        <span class="tl-date">Dec 2016 – Apr 2019</span>
+      </div>
+      <p class="tl-desc">Translated business requirements into BRDs and test plans for eCommerce workflows. Designed and executed manual and UAT test cases for checkout, payment, and order management systems in an Agile environment.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-header">
+        <span class="tl-role">Customer Service Advisor – Banking Process</span>
+        <span class="tl-company">Golden Star Facilities &amp; Services (HSBC)</span>
+        <span class="tl-date">Jul 2013 – Mar 2014</span>
+      </div>
+      <p class="tl-desc">Provided application and process support to enterprise users. Developed strong communication, SLA management, and issue resolution skills.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>Portfolio of <strong>Eluru Priyanka</strong> · Manual QA Test Engineer · SAP Functional Tester (MM/SD) · Hyderabad, India</p>
+  <p style="margin-top:8px;">All work samples are original and represent real-world QA scenarios from professional experience.</p>
+</footer>
+
+</body>
+</html>
